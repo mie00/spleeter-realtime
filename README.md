@@ -41,7 +41,7 @@ In this case `alsa_output.pci-0000_00_1f.3.analog-stereo` is the sink name that 
 
 3. Load the plugin
 ```
-pactl load-module module-ladspa-sink plugin=spleeter_ladspa label=vocals sink_master=$MASTER
+~ pactl load-module module-ladspa-sink plugin=spleeter_ladspa label=vocals sink_master=$MASTER
 26
 ```
 26 is the module id used to unload the plugin run `pactl unload-module 26` to unload it.

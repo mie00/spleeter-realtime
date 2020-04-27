@@ -40,11 +40,7 @@ class Spleeter_Server(LADSPA_TCPServer):
             return data
         if should_process:
             processed = sep.separate(data.astype('float64').reshape((-1, 1)))
-            if channel == 0:
-                return processed['vocals'].astype('float32')[:,0]
-            else:
-                return processed['vocals'].astype('float32')[:,0]
-                return processed['accompaniment'].astype('float32')[:,0]
+            return processed['vocals'].astype('float32')[:,0]
         else:
             return data
 

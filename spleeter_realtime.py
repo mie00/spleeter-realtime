@@ -13,6 +13,7 @@ from spleeter.separator import Separator
 from ladspa_server import LADSPA_TCPServer
 
 import numpy as np
+import os
 
 __email__ = 'mohamed@elawadi.net'
 __author__ = 'Mohamed Elawadi'
@@ -50,5 +51,6 @@ if __name__ == "__main__":
     
     print("warming up")
     sep.separate(np.zeros((1024, 2)))
+    print("run kill -SIGUSR1 %d to toggle the service on/off"%os.getpid())
     print("serving on :8083")
     Spleeter_Server.serve_forever(8083)

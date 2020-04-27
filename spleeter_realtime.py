@@ -4,7 +4,7 @@
 """
     Entrypoint provider for tcp server.
 
-    USAGE: python realtime_spleeter.py
+    USAGE: python spleeter_realtime.py
 """
 
 import signal

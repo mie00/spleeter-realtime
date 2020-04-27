@@ -4,13 +4,13 @@
 """
     Entrypoint provider for tcp server.
 
-    USAGE: python -m spleeter.server
+    USAGE: python realtime_spleeter.py
 """
 
 import signal
 from spleeter.separator import Separator
 
-from .ladspa_server import LADSPA_TCPServer
+from ladspa_server import LADSPA_TCPServer
 
 import numpy as np
 
@@ -28,11 +28,8 @@ def handler(signum, frame):
     else:
         print("not converting")
 
-
-signal.signal(signal.SIGUSR1, handler)
-
 sep = Separator(
-    'spleeter:2stem-finetune-realtime',
+    './2stem-finetune-realtime.json',
     MWF=False,
     stft_backend='tensorflow',
     multiprocess=False)
@@ -52,7 +49,10 @@ class Spleeter_Server(LADSPA_TCPServer):
             return data
 
 
-print("warming up")
-sep.separate(np.zeros((1024, 2)))
-print("serving on :8083")
-Spleeter_Server.serve_forever(8083)
+if __name__ == "__main__":
+    signal.signal(signal.SIGUSR1, handler)
+    
+    print("warming up")
+    sep.separate(np.zeros((1024, 2)))
+    print("serving on :8083")
+    Spleeter_Server.serve_forever(8083)

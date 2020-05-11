@@ -24,6 +24,13 @@ python test_gpu.py
 
 ## Usage
 
+```
+./run.sh
+```
+press q or ctrl+c to quit, any key to toggle it on/off.
+
+### Advanced usage
+
 1. Run the server
 ```
 cd spleeter-realtime
